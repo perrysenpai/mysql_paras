@@ -137,6 +137,55 @@ Tables:  in tables we must have a definite data type for each type :
               +--------+------+
              although if we still want null
              INSERT INTO cats3 VALUES("jely" , NULL );  this would work
+             
+**TO make a column Primary key: 
+             CREATE TABLE unique_Cats (
+             cat_ID INT NOT NULL,
+             name VARCHAR(20) ,
+             age INT,
+             PRIMARY KEY(cat_ID)
+             );
+
+DESC unique_Cats;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| cat_ID | int(11)     | NO   | PRI | NULL    |       |
+| name   | varchar(20) | YES  |     | NULL    |       |
+| age    | int(11)     | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+        if we want to autoincremtn the id without specyfying anything  what we can do is
+            CREATE TABLE unique_Cats2 (
+             cat_ID INT NOT NULL AUTO_INCREMENT,
+             name VARCHAR(20) ,
+             age INT,
+             PRIMARY KEY(cat_ID)
+             );
+             
+ 
+        Insert into unique_Cats2  Values("jim", 2),("jeff",3),("jim",2);
+Select * from unique_Cats2;
++--------+------+------+
+| cat_ID | name | age  |
++--------+------+------+
+|      1 | jim  |    2 |
+|      2 | jeff |    3 |
+|      3 | jim  |    2 |
++--------+------+------+
+
+
+and if we describe the table:
+
+DESC unique_Cats2;
++--------+-------------+------+-----+---------+----------------+
+| Field  | Type        | Null | Key | Default | Extra          |
++--------+-------------+------+-----+---------+----------------+
+| cat_ID | int(11)     | NO   | PRI | NULL    | auto_increment |
+| name   | varchar(20) | YES  |     | NULL    |                |
+| age    | int(11)     | YES  |     | NULL    |                |
++--------+-------------+------+-----+---------+----------------+
+
+               
               
              
 
