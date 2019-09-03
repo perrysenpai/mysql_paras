@@ -185,8 +185,27 @@ DESC unique_Cats2;
 | age    | int(11)     | YES  |     | NULL    |                |
 +--------+-------------+------+-----+---------+----------------+
 
-               
-              
-             
 
-                   
+EXERCISE: lecture 63:
+            CREATE TABLE employee(
+            id INT NOT NULL AUTO_INCREMENT,
+            first_name VARCHAR(30) NOT NULL ,
+            last_name VARCHAR(30) NOT NULL,
+            middle_name VARCHAR(30),
+            age INT NOT NULL,
+            current_status VARCHAR(30) NOT NULL DEFAULT "employed",
+            PRIMARY KEY(id)
+            );
+            
+            
+            OR
+            CREATE TABLE employee(
+            id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            first_name VARCHAR(30) NOT NULL ,
+            last_name VARCHAR(30) NOT NULL,
+            middle_name VARCHAR(30),
+            age INT NOT NULL,
+            current_status VARCHAR(30) NOT NULL DEFAULT "employed",
+            );
+
+
