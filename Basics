@@ -1,0 +1,143 @@
+Logged in to goormIDE
+
+to start mysql use : mysql-ctl cli
+
+Create a database: CREATE DATABASE paras_db;
+Delete a database: DROP DATABASE paras_db;
+Show avail. databases: SHOW DATABASES;
+
+To know which database we are working on: SELECT DATABASE();    shows null by default   // yeah with parantheses 
+To use a database: USE paras_db;    ✔
+                   USE DATABASE paras_db;   ❌
+                   
+Tables:  in tables we must have a definite data type for each type :
+         INT can be used for integer values
+         VARCHAR is used for varied length 0-255 charactes
+         CHAR is used when we need fixed size character for each entry.
+         
+         CREATE TABLE cats
+         (
+            name VARCHAR(100),
+            age INT;
+         )
+         
+         
+         SHOW AVAIL TABLES: SHOW TABLES;
+         DELETE A TABLE : DROP TABLE cat;
+         SHOW CONTENTS OF A TABLE: DESC cats;     desc as in describe
+                                   SHOW COLUMNS FROM cats;
+                                   
+         
+         INSERTING DATA IN TABLE:
+         Insert into cats(name, age) VALUES("blue", 2);
+         Insert into cats(age, name) VALUES("3", "Puss");
+         
+         Multiple insert:
+         INSERT INTO cats2(name, age) VALUES("Raspberry", 5),
+                                           ("DIAVLO", 6),
+                                           ("HERO", 1);
+                                           
+         Warning: SHOW WARNINGS; can be used to show warning.
+                  it can arise when we exceed limit for VARCHAR or 
+                  when we enter string into a INT type (by default it would store 0 if this occurs , although this default value can be changed).
+                                           
+         e.g Create table people(
+            first_name VARCHAR(20),
+            last_name VARCHAR(20),
+            age INT);
+            
+            INSERT INTO people(first_name ,last_name ,age) VALUES ("Tina", "Belchar" , 13);
+            INSERT INTO people VALUES ("Bob", "Belcher", 42);
+            INSERT INTO people VALUES ("Linda", "Belcher", 36),
+                                      ("Philip" ,"Frond", 38),
+                                      ("Calvin","Fischoeder",70);
+             while inserting varchar string we may need to have a quatation inside the string:
+             ' my name is 'paras' and i am 22 '
+             so to enter this we must use escape key \
+             ' my name is \'paras\' and i am 22 '
+             same goes with double quotes.
+             or what we can do is
+             ' my name is "paras" and i am 22 '
+             
+             
+             NULL & NOT NULL:
+             if we do
+             INSERT INTO cats() VALUES(),
+             Select * from cats;
+             
+             +-----------+------+
+             | name      | age  |
+             +-----------+------+
+             | Jetson    |    7 |
+             | Blue      |    2 |
+             | Puss      |    3 |
+             | Raspberry |    5 |
+             | DIAVLO    |    6 |
+             | HERO      |    1 |
+             | NULL      | NULL |
+             +-----------+------+
+
+             age and name NULL will be shown because it is a permitted value for name and age when we DESC our table.
+              | Field | Type         | Null | Key | Default | Extra |
+              +-------+--------------+------+-----+---------+-------+
+              | name  | varchar(100) | YES  |     | NULL    |       |
+              | age   | int(11)      | YES  |     | NULL    |       |
+              +-------+--------------+------+-----+---------+-------+
+              to rectify this
+              
+              we can specify NOT NULL while defining a data type like:
+              CREATE TABLE cats2(
+              name VARCHAR(50) NOT NULL,
+              age INT NOT NULL
+              );
+              
+              mysql> DESC cats2;
+              +-------+-------------+------+-----+---------+-------+
+              | Field | Type        | Null | Key | Default👅 | Extra |
+              +-------+-------------+------+-----+---------+-------+
+              | name  | varchar(50) | NO   |     | NULL    |       |
+              | age   | int(11)     | NO   |     | NULL    |       |
+              +-------+-------------+------+-----+---------+-------+
+              
+              INSERT INTO cats() VALUES(); 
+              +-----------+-----+
+              | name      | age |
+              +-----------+-----+
+              | Raspberry |   5 |
+              | DIAVLO    |   6 |
+              | HERO      |   1 |
+              |           |   0 |
+              +-----------+-----+
+
+            instead of null it put blank for name and 0 for age by Default.
+            but we can set different default values.
+            
+            DEFAULT VALUES as shows 👅 :
+             CREATE table cats3
+             ( name VARCHAR(20) DEFAULT "cherry",
+              age INT DEFAULT 99
+              );
+            
+            SELECT * FROM  cats3;
+            +-------+-------------+------+-----+---------+-------+
+            | Field | Type        | Null | Key | Default | Extra |
+            +-------+-------------+------+-----+---------+-------+
+            | name  | varchar(20) | YES  |     | cherry  |       |
+            | age   | int(11)     | YES  |     | 99      |       |
+            +-------+-------------+------+-----+---------+-------+
+              
+              
+              INSERT INTO cats3 VALUES();
+              
+              SELECT * FROM cats3;
+              +--------+------+
+              | name   | age  |
+              +--------+------+
+              | cherry |   99 |
+              +--------+------+
+             although if we still want null
+             INSERT INTO cats3 VALUES("jely" , NULL );  this would work
+              
+             
+
+                   
