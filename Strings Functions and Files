@@ -96,3 +96,42 @@ SELECT SUBSTRING("HEllo world",-4) as "show";
 
 WE CAN ALSO USE SUBSTR() FOR THE SAME THING:
 
+if we want to have title as first 10 characters and then three ddots.
+SELECT CONCAT(SUBSTR(title, 1,10), "...") as "NEW TITLE" from books;
++---------------+
+| NEW TITLE     |
++---------------+
+| The Namesa... |
+| Norse Myth... |
+| American G... |
+| Interprete... |
+| A Hologram... |
+| The Circle... |
+| The Amazin... |
+| Just Kids...  |
+| A Heartbre... |
+| Coraline...   |
+| What We Ta... |
+| Where I'm ... |
+| White Nois... |
+| Cannery Ro... |
+| Oblivion: ... |
+| Consider t... |
++---------------+
+
+REPLACE:  SELECT REPLACE("HELLO WORLD", "HELL", "898");
+remember it is case specific.
+SELECT REPLACE("CHEESE COFFEE MILK BREAD"," ", "AND");
++------------------------------------------------+
+| REPLACE("CHEESE COFFEE MILK BREAD"," ", "AND") |
++------------------------------------------------+
+| CHEESEANDCOFFEEANDMILKANDBREAD                 |
++------------------------------------------------+
+
+SELECT reverse("HEllo WORLD");
++------------------------+
+| reverse("HEllo WORLD") |
++------------------------+
+| DLROW ollEH            |
++------------------------+
+
