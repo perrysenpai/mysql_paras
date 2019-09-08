@@ -38,3 +38,55 @@ To read a particular row: select name from cats;
       we can specify how our data is displayed back to us:
       it doesnt alter the data but just how it is diplayed to us.
       e.g Select cat_id as id, name from cats;
++----+----------------+
+| id | name           |
++----+----------------+
+|  1 | Ringo          |
+|  2 | Cindy          |
+|  3 | Dumbledore     |
+|  4 | Egg            |
+|  5 | Misty          |
+|  6 | George Michael |
+|  7 | Jackson        |
++----+----------------+
+
+      SELECT name AS 'cat name', breed AS 'kitty breed' FROM cats;
+      
++----------------+-------------+
+| cat name       | kitty breed |
++----------------+-------------+
+| Ringo          | Tabby       |
+| Cindy          | Maine Coon  |
+| Dumbledore     | Maine Coon  |
+| Egg            | Persian     |
+| Misty          | Tabby       |
+| George Michael | Ragdoll     |
+| Jackson        | Sphynx      |
++----------------+-------------+
+
+
+
+UPDATE:  using UPDATE, SET and WHERE:
+        UPDATE cats SET breed="ShortHair" where name="Ringo"
+        UPDATE cats SET name='Jack' WHERE name='Jackson';
+        UPDATE cats SET breed='British Shorthair' WHERE name='Ringo';
+        UPDATE cats SET age=12 WHERE breed='Maine Coon';
+
+Delete: use DELETE:
+
+Delete from cats wher name="egg";
+select * from cats;
++--------+----------------+------------+------+
+| cat_id | name           | breed      | age  |
++--------+----------------+------------+------+
+|      1 | Ringo          | Tabby      |    4 |
+|      2 | Cindy          | Maine Coon |   10 |
+|      3 | Dumbledore     | Maine Coon |   11 |
+|      5 | Misty          | Tabby      |   13 |
+|      6 | George Michael | Ragdoll    |    9 |
+|      7 | Jackson        | Sphynx     |    7 |
++--------+----------------+------------+------+
+
+*********AS WE CAN SEE THE cat_id is now missing value 4 so it might be a good idea to store cat_id somewhere other table;
+DELETE from cats : deletes the entire data inside the table, the shell is still available.
+DROP table cats: removes the cats table from existance
