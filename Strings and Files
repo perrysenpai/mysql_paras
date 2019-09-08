@@ -1,0 +1,10 @@
+we used to run out commands through the shell but now what we can do is
+have a file.sql and we can run out code throught there. 
+if we have a new file say file.sql to execute it go to the shell and type
+          
+          source file.sql;
+this runs the file.
+NOTE: the file must be in the present working directory. to see that we can type pwd command(outside of sql) in the terminal.
+if the file is in the subfolder say paras_db what we can do is:
+          
+          source paras_db/file.sql;
