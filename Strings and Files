@@ -8,3 +8,28 @@ NOTE: the file must be in the present working directory. to see that we can type
 if the file is in the subfolder say paras_db what we can do is:
           
           source paras_db/file.sql;
+          
+CONCAT() function:
+example: SELECT CONCAT(author_fname, author_lname) from books
+         SELECT CONCAT(author_fname," ", author_lname) as "FULL NAME"  from books;
+         SELECT author_fname as first, author_lname as last, CONCAT(author_fname," ", author_lname) as "Full Name" from books;
++---------+----------------+----------------------+
+| first   | last           | Full Name            |
++---------+----------------+----------------------+
+| Jhumpa  | Lahiri         | Jhumpa Lahiri        |
+| Neil    | Gaiman         | Neil Gaiman          |
+| Neil    | Gaiman         | Neil Gaiman          |
+| Jhumpa  | Lahiri         | Jhumpa Lahiri        |
+| Dave    | Eggers         | Dave Eggers          |
+| Dave    | Eggers         | Dave Eggers          |
+| Michael | Chabon         | Michael Chabon       |
+| Patti   | Smith          | Patti Smith          |
+| Dave    | Eggers         | Dave Eggers          |
+| Neil    | Gaiman         | Neil Gaiman          |
+| Raymond | Carver         | Raymond Carver       |
+| Raymond | Carver         | Raymond Carver       |
+| Don     | DeLillo        | Don DeLillo          |
+| John    | Steinbeck      | John Steinbeck       |
+| David   | Foster Wallace | David Foster Wallace |
+| David   | Foster Wallace | David Foster Wallace |
++---------+----------------+----------------------+
