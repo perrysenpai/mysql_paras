@@ -128,10 +128,41 @@ SELECT REPLACE("CHEESE COFFEE MILK BREAD"," ", "AND");
 | CHEESEANDCOFFEEANDMILKANDBREAD                 |
 +------------------------------------------------+
 
+REVERSE:
 SELECT reverse("HEllo WORLD");
 +------------------------+
 | reverse("HEllo WORLD") |
 +------------------------+
 | DLROW ollEH            |
 +------------------------+
+
+CHAR_LENGTH:
+Select CHAR_LENGTH("HELLO WORLDS");
++-----------------------------+
+| CHAR_LENGTH("HELLO WORLDS") |
++-----------------------------+
+|                          12 |
++-----------------------------+
+
+SELECT author_lname, CHAR_LENGTH(author_lname) from books;
++----------------+---------------------------+
+| author_lname   | CHAR_LENGTH(author_lname) |
++----------------+---------------------------+
+| Lahiri         |                         6 |
+| Gaiman         |                         6 |
+| Gaiman         |                         6 |
+| Lahiri         |                         6 |
+| Eggers         |                         6 |
+| Eggers         |                         6 |
+| Chabon         |                         6 |
+| Smith          |                         5 |
+| Eggers         |                         6 |
+| Gaiman         |                         6 |
+| Carver         |                         6 |
+| Carver         |                         6 |
+| DeLillo        |                         7 |
+| Steinbeck      |                         9 |
+| Foster Wallace |                        14 |
+| Foster Wallace |                        14 |
++----------------+---------------------------+
 
