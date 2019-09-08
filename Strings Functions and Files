@@ -33,3 +33,66 @@ example: SELECT CONCAT(author_fname, author_lname) from books
 | David   | Foster Wallace | David Foster Wallace |
 | David   | Foster Wallace | David Foster Wallace |
 +---------+----------------+----------------------+
+
+CONCAT_WS : CONCAT WITH SEPRATOR:
+suppose we want to have something like this:    title-author_lname-author_fname
+we can do: SELECT CONCAT(title, "-" , author_lname, "-", author_fname);
+           INSTEAD we can use SELECT CONCAT_WS("-", title, author_lname, author_fname);
+
+
+SUBSTRING : SELECT SUBSTRING("HELLO WORLD", 1 ,4);
+output: 
++------------------------------+
+| SUBSTRING("HEllo world",1,4) |
++------------------------------+
+| HEll                         |
++------------------------------+
+
+SELECT SUBSTRING("HEllo world",1,4) as "show";
++------+
+| show |
++------+
+| HEll |
++------+
+
+if we give a single number it gives us the word from that number onwards including the number.
+SELECT SUBSTRING("HEllo world",4) as "show";
++----------+
+| show     |
++----------+
+| lo world |
++----------+
+
+if we give a negative number it gives it the last n numbers
+SELECT SUBSTRING("HEllo world",-4) as "show";
++------+
+| show |
++------+
+| orld |
++------+
+
+
+ SELECT Substring(title, 1,10) as " TITLE"  from books;
++------------+
+| TITLE     |
++------------+
+| The Namesa |
+| Norse Myth |
+| American G |
+| Interprete |
+| A Hologram |
+| The Circle |
+| The Amazin |
+| Just Kids  |
+| A Heartbre |
+| Coraline   |
+| What We Ta |
+| Where I'm  |
+| White Nois |
+| Cannery Ro |
+| Oblivion:  |
+| Consider t |
++------------+
+
+WE CAN ALSO USE SUBSTR() FOR THE SAME THING:
+
