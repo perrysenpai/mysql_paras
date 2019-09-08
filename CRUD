@@ -90,3 +90,6 @@ select * from cats;
 *********AS WE CAN SEE THE cat_id is now missing value 4 so it might be a good idea to store cat_id somewhere other table;
 DELETE from cats : deletes the entire data inside the table, the shell is still available.
 DROP table cats: removes the cats table from existance
+
+EXERCIESE:
+UPDATE shirts SET color='off white', shirt_size='XS' WHERE color='white';
