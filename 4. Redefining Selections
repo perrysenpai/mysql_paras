@@ -161,3 +161,58 @@ SELECT title , released_year from books ORDER BY 2 LIMIT 12,555;
 | Lincoln In The Bardo             |          2017 |
 +----------------------------------+---------------+
 
+
+LIKE:  WHERE IS USED TO SELECT EXACT MATCHES:
+       eg: if we want a book with Harry Potter in title then we can use WHERE in conjunction with LIKE.
+       
+       % is a wildcard. 
+       SELECT title, author_fname from books where author_fname LIKE "%da%"; not case specific
+       anything - da - anything 
++-------------------------------------------+--------------+
+| title                                     | author_fname |
++-------------------------------------------+--------------+
+| A Hologram for the King: A Novel          | Dave         |
+| The Circle                                | Dave         |
+| A Heartbreaking Work of Staggering Genius | Dave         |
+| Oblivion: Stories                         | David        |
+| Consider the Lobster                      | David        |
+| 10% Happier                               | Dan          |
+| fake_book                                 | Freida       |
++-------------------------------------------+--------------+
+
+SELECT title, author_fname from books where author_fname LIKE "%da";
++-----------+--------------+
+| title     | author_fname |
++-----------+--------------+
+| fake_book | Freida       |
++-----------+--------------+
+
+SELECT title, author_fname from books where author_fname LIKE "%";  will show entire list.
+        _ is another wildcard. represents exactly 1 character.
+        
+Select title, stock_quantity from books where stock_quantity like "___";  triple _ means show with 3 characters only.
++-------------------------------------------+----------------+
+| title                                     | stock_quantity |
++-------------------------------------------+----------------+
+| A Hologram for the King: A Novel          |            154 |
+| A Heartbreaking Work of Staggering Genius |            104 |
+| Coraline                                  |            100 |
+| Oblivion: Stories                         |            172 |
+| fake_book                                 |            287 |
++-------------------------------------------+----------------+
+
+
+Select title, stock_quantity from books where stock_quantity like "_";   because no stock is available with 1 character length stock quantity.
+Empty set.
+
+if we have % in the name then we use \ to escape
+
+SELECT title FROM books WHERE title LIKE "%\%%";
+anthing- %- anything.
++-------------+
+| title       |
++-------------+
+| 10% Happier |
++-------------+
+       
+
