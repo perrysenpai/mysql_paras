@@ -112,3 +112,52 @@ Select author_lname, author_fname from books ORDER BY author_lname, author_fname
 
 what it does is after sorting by lname , then it sorts by first name like harris dan comes first here before harris freida  because after 
 sorting last name we sort the fisrt name.
+
+
+LIMIT: SELECT title from books LIMIT 2:
++-----------------+
+| title           |
++-----------------+
+| The Namesake    |
+| Norse Mythology |
++-----------------+
+
+        Generally , we use it with ORDER BY;
+SELECT title , released_year from books ORDER BY 2 LIMIT 5;
++-----------------------------------------------------+---------------+
+| title                                               | released_year |
++-----------------------------------------------------+---------------+
+| Cannery Row                                         |          1945 |
+| What We Talk About When We Talk About Love: Stories |          1981 |
+| White Noise                                         |          1985 |
+| Where I'm Calling From: Selected Stories            |          1989 |
+| Interpreter of Maladies                             |          1996 |
++-----------------------------------------------------+---------------+
+
+We can also specify the starting and how many from there ( using 0 indexing):
+
+SELECT title , released_year from books ORDER BY 2 LIMIT 2,5;
++-------------------------------------------+---------------+
+| title                                     | released_year |
++-------------------------------------------+---------------+
+| White Noise                               |          1985 |
+| Where I'm Calling From: Selected Stories  |          1989 |
+| Interpreter of Maladies                   |          1996 |
+| The Amazing Adventures of Kavalier & Clay |          2000 |
+| American Gods                             |          2001 |
++-------------------------------------------+---------------+
+
+To go Until the end we can use a large number as second parameter.
+SELECT title , released_year from books ORDER BY 2 LIMIT 12,555;
++----------------------------------+---------------+
+| title                            | released_year |
++----------------------------------+---------------+
+| Consider the Lobster             |          2005 |
+| Just Kids                        |          2010 |
+| A Hologram for the King: A Novel |          2012 |
+| The Circle                       |          2013 |
+| 10% Happier                      |          2014 |
+| Norse Mythology                  |          2016 |
+| Lincoln In The Bardo             |          2017 |
++----------------------------------+---------------+
+
