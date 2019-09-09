@@ -166,3 +166,14 @@ SELECT author_lname, CHAR_LENGTH(author_lname) from books;
 | Foster Wallace |                        14 |
 +----------------+---------------------------+
 
+UPPER CASE: SELECT UPPER("hello world");
+LOWER CASE: SELECT LOWER("HELLO WORLD");
+
+SELECT CONCAT(SUBSTRING(title, 1, 10), "...") as "short name", CONCAT(author_lname,",",author_fname)as "author" , CONCAT(stock_quantity," in stock") as "quantity"  from books  WHERE released_year=2001 ;
++---------------+-------------+--------------+
+| short name    | author      | quantity     |
++---------------+-------------+--------------+
+| American G... | Gaiman,Neil | 12 in stock  |
+| A Heartbre... | Eggers,Dave | 104 in stock |
++---------------+-------------+--------------+
+
