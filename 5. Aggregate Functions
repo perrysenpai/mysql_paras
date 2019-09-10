@@ -1,0 +1,80 @@
+THE COUNT FUNCTION: 
+
+SELECT COUNT( DISTINCT author_fname ) from books;
++--------------------------------+
+| COUNT( DISTINCT author_fname ) |
++--------------------------------+
+|                             12 |
++--------------------------------+
+
+
+SELECT COUNT(title) from books;
++--------------+
+| COUNT(title) |
++--------------+
+|           19 |
++--------------+
+
+SELECT COUNT(DISTINCT author_fname, author_lname ) from books;   distinct lnames=12 distinct fnames=11 distinct full name=12
++---------------------------------------------+
+| COUNT(DISTINCT author_fname, author_lname ) |
++---------------------------------------------+
+|                                          12 |
++---------------------------------------------+
+
+GROUP BY:   https://www.udemy.com/the-ultimate-mysql-bootcamp-go-from-sql-beginner-to-expert/learn/lecture/6915112#overview
+            GROUP BY aggregates or summarises the data into single rows.
+            It is mainly used in conjunction with COUNT and other similar functions.
+            
+            
+            
+MIN AND MAX function:
+SELECT MIN(title) from books;
++-------------+
+| MIN(title)  |
++-------------+
+| 10% Happier |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT MAX(title) from books;
++-------------+
+| MAX(title)  |
++-------------+
+| White Noise |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT MIN(CHAR_LENGTH(title) ) from books;
++--------------------------+
+| MIN(CHAR_LENGTH(title) ) |
++--------------------------+
+|                        8 |
++--------------------------+
+            
+SELECT MIN(released_year) from books;
++--------------------+
+| MIN(released_year) |
++--------------------+
+|               1945 |
++--------------------+
+
+
+***************************IF WE WANT THE BOOK TITLE WITH MOST PAGES WE CAN DO THIS. ***********************
+SELECT title, MAX(pages) from books;
++--------------+------------+
+| title        | MAX(pages) |
++--------------+------------+
+| The Namesake |        634 |
++--------------+------------+
+but although the max pages are correct , The Namesake is not the correct book. IT IS
+The Amazing Adventures of Kavalier & CLay.   SO HOW TO RETIFY THIS.
+
+SELECT title, pages from books where pages=(SELECT MAX(pages) from books);
+(SELECT MAX(pages) from books) gives us 634;
++-------------------------------------------+-------+
+| title                                     | pages |
++-------------------------------------------+-------+
+| The Amazing Adventures of Kavalier & Clay |   634 |
++-------------------------------------------+-------+
+
