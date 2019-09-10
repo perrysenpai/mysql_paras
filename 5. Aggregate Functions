@@ -78,3 +78,11 @@ SELECT title, pages from books where pages=(SELECT MAX(pages) from books);
 | The Amazing Adventures of Kavalier & Clay |   634 |
 +-------------------------------------------+-------+
 
+OR A BETTER WAY::
+SELECT title, pages from books ORDER by 2 DESC  LIMIT 1;
++-------------------------------------------+-------+
+| title                                     | pages |
++-------------------------------------------+-------+
+| The Amazing Adventures of Kavalier & Clay |   634 |
++-------------------------------------------+-------+
+
