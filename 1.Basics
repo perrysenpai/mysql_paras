@@ -209,3 +209,6 @@ EXERCISE: lecture 63:
             );
 
 
+
+MORE DATA TYPES:
+CHAR: CHAR has a fixed length: Every varible must be of that fixed length. if it has more it will be truncated;
