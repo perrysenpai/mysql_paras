@@ -86,3 +86,23 @@ SELECT title, pages from books ORDER by 2 DESC  LIMIT 1;
 | The Amazing Adventures of Kavalier & Clay |   634 |
 +-------------------------------------------+-------+
 
+SUM function:
+SELECT author_lname, author_fname , sum(pages) from books GROUP BY author_fname, author_lname;
++----------------+--------------+------------+
+| author_lname   | author_fname | sum(pages) |
++----------------+--------------+------------+
+| Harris         | Dan          |        256 |
+| Eggers         | Dave         |       1293 |
+| Foster Wallace | David        |        672 |
+| DeLillo        | Don          |        320 |
+| Harris         | Freida       |        428 |
+| Saunders       | George       |        367 |
+| Lahiri         | Jhumpa       |        489 |
+| Steinbeck      | John         |        181 |
+| Chabon         | Michael      |        634 |
+| Gaiman         | Neil         |        977 |
+| Smith          | Patti        |        304 |
+| Carver         | Raymond      |        702 |
++----------------+--------------+------------+
+
+AVG funtion: used in the same way;
