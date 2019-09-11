@@ -212,3 +212,24 @@ EXERCISE: lecture 63:
 
 MORE DATA TYPES:
 CHAR: CHAR has a fixed length: Every varible must be of that fixed length. if it has more it will be truncated;
+                               IF it is less , then it is padded with spaces.
+      BUT WHY DO WE USE THIS?
+      because it is faster than VARCHAR.
+      
+DECIMAL: A number with decimal point.
+         price DECIMAL(10,2);
+         10 means: total no of digits in number .
+         2 means: total no of digits after decimal point.
+         
+         e.g:      DECIMAL(5,2)--->   ______5       
+                                      999.99
+                                          --2
+       DECIMAL(M,D): M has range 1-65.
+                     D has range 0-30
+       for DECIMAL(5,2) if we add 10 to the table it will be printed as 10.00.
+       if we put 78955656 then it is converted to largest possible number i.e 999.99
+       if we add 298.99999 it will round up to 299.99
+       1.9999 is converted  to 2
+
+FLOAT and DOUBLE: 7 and 15 digit accuracy . 9999999999999999 is put into float will give 999999900000000 bc it has 7 digit accuracy.
+                                          
