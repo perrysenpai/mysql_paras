@@ -1,0 +1,125 @@
+DATE: stores a date: FORMAt yyyy-mm-dd
+TIME: stores a time: hh:mm;ss
+DATETIME: yyyy-mm-dd hh;mm;ss
+
+CREATE TABLE people (name VARCHAR(100), birthdate DATE, birthtime TIME, birthdt DATETIME);
+ 
+INSERT INTO people (name, birthdate, birthtime, birthdt)
+VALUES('Harry', '1983-11-11', '10:07:35', '1983-11-11 10:07:35');
+ 
+INSERT INTO people (name, birthdate, birthtime, birthdt)
+VALUES('Larry', '1943-12-25', '04:10:42', '1943-12-25 04:10:42');
+ 
+SELECT * FROM people;
+
+SELECT CURDATE(); gives the date right now;
+SELECT CURTIME(): gives the time right now;
+SELECT NOW(): gives the datetime right now;
+
+INSERT INTO people (name, birthdate, birthtime, birthdt)
+VALUES('marry', CURDATE(), CURTIME(), NOW());
+
+
+
+SELECT DAY(NOW());    using DAY() extracts the day from the date or datetime;
++------------+
+| DAY(NOW()) |
++------------+
+|         11 |
++------------+
+
+SELECT DAYNAME(NOW());   returns the day name
++----------------+
+| DAYNAME(NOW()) |
++----------------+
+| Wednesday      |
++----------------+
+
+SELECT DAYOFWEEK(NOW());  4 for wednesday
++------------------+
+| DAYOFWEEK(NOW()) |
++------------------+
+|                4 |
++------------------+
+
+ SELECT DAYOFYEAR(NOW());   day of the year
++------------------+
+| DAYOFYEAR(NOW()) |
++------------------+
+|              254 |
++------------------+
+
+MONTHNAME(), HOUR(), MINUTE(), SECOND()
+
+DATE_FORMAT:    *************************************   https://www.w3schools.com/sql/func_mysql_date_format.asp
+SELECT DATE_FORMAT(NOW(),' %M');
++--------------------------+
+| DATE_FORMAT(NOW(),' %M') |
++--------------------------+
+|  September               |
++--------------------------+
+
+SELECT DATE_FORMAT(NOW(), '%W %M %Y');
++--------------------------------+
+| DATE_FORMAT(NOW(), '%W %M %Y') |
++--------------------------------+
+| Wednesday September 2019       |
++--------------------------------+
+
+SELECT DATE_FORMAT(NOW(), "%d/%m/%y");   use %Y for full year
++--------------------------------+
+| DATE_FORMAT(NOW(), "%d/%m/%y") |
++--------------------------------+
+| 11/09/19                       |
+
+
+ SELECT DATE_FORMAT(NOW(), '%m/%d/%Y at %h:%i') ;   i is used for minute
++-----------------------------------------+
+| DATE_FORMAT(NOW(), '%m/%d/%Y at %h:%i') |
++-----------------------------------------+
+| 09/11/2019 at 07:51                     |
++-----------------------------------------+
+
+
+DATEDIFF: takes two dates , or one date  and one datetime. tells the number of days between these days.
+
+SELECT DATEDIFF(NOW(), '2019-09-01');
++-------------------------------+
+| DATEDIFF(NOW(), '2019-09-01') |
++-------------------------------+
+|                            10 |
++-------------------------------+
+
+SELECT DATE_ADD(NOW(), INTERVAL 1 DAY);   adds one day to the day;    DATE_SUB works the same
++---------------------------------+
+| DATE_ADD(NOW(), INTERVAL 1 DAY) |
++---------------------------------+
+| 2019-09-12 08:35:23             |
++---------------------------------+
+
+Instead of date_add and date_sub we can use : date + INTERVAL 1 MONTH or so.
+SELECT NOW()+INTERVAL 1 MONTH ;
++------------------------+
+| NOW()+INTERVAL 1 MONTH |
++------------------------+
+| 2019-10-11 08:38:49    |
++------------------------+
+
+or SELECT NOW()+INTERVAL 1 MONTH +Interval 1 hour;
+
+
+TIMESTAMPS:
+STORING WHEN SOMETHING WAS CREATED . TIMESTAMP IS A DATATYPE IN sql. it is similar to datetime. range of timestamp is less 1970 to 2038
+timastam takes 4 bytes and datetime needs 8bytes
+
+CREATE TABLE contents( name VARCHAR(20), created TIMESTAMP DEFAULT NOW());
+INSERT INTO contents(name) VALUES ("paras"),("rahul");
+
+mysql> SELECT * from contents;
++-------+---------------------+
+| name  | created             |
++-------+---------------------+
+| paras | 2019-09-11 09:55:02 |
+| rahul | 2019-09-11 09:55:02 |
++-------+---------------------+
+THis is what timestamp is intended for 
