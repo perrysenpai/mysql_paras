@@ -93,3 +93,48 @@ SELECT title, stock_quantity , CASE WHEN stock_quantity BETWEEN 0 AND 60 THEN "*
 | Lincoln In The Bardo                                |           1000 | FLOP  |
 +-----------------------------------------------------+----------------+-------+
          
+a Better way is
+SELECT title, stock_quantity , CASE WHEN stock_quantity <=50 THEN "*" WHEN stock_quantity<=100 THEN "**" ELSE "***"  END as STOCK from books;
+we know <=100 will be occured when <=50 has already occured.
+
+
+EXERCISE:  SELECT title, author_fname , CASE WHEN title LIKE "%stories%" THEN "Short Stories" WHEN title="Just Kids" OR title="A heartbreaking work of Staggering genius " THEN "Memoir" ELSE "Novel" END as "TYPE" from books;
+            SELECT 1 in(5,3) false.
+            
+            
+            ***************************************************************************
+             SELECT title from books where  title LIKE "A%" OR title LIKE "C%";
++-------------------------------------------+
+| title                                     |
++-------------------------------------------+
+| American Gods                             |
+| A Hologram for the King: A Novel          |
+| A Heartbreaking Work of Staggering Genius |
+| Coraline                                  |
+| Cannery Row                               |
+| Consider the Lobster                      |
++-------------------------------------------+
+            OR IT CAN BE WRITTEN AS :  SELECT title from books WHere SUBSTR(title, 1,1) IN( "C", "A");
+            OR IT CAN BE WRITTEN AS :  SELECT title from books WHere SUBSTR(title, 1,1) ="C" OR SUBSTR(title,1,1)="A";
+            
+            
+            
+ AND HERE COMES THE GIANt
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~           
+ SELECT title, author_lname , CASE WHEN COUNT(*)=1 THEN "1 book" ELSE CONCAT(COUNT(*), " books") END as topic from books group by author_fname, author_lname ORDER BY author_lname;
++-----------------------------------------------------+----------------+---------+
+| title                                               | author_lname   | topic   |
++-----------------------------------------------------+----------------+---------+
+| What We Talk About When We Talk About Love: Stories | Carver         | 2 books |
+| The Amazing Adventures of Kavalier & Clay           | Chabon         | 1 book  |
+| White Noise                                         | DeLillo        | 1 book  |
+| A Hologram for the King: A Novel                    | Eggers         | 3 books |
+| Oblivion: Stories                                   | Foster Wallace | 2 books |
+| Norse Mythology                                     | Gaiman         | 3 books |
+| 10% Happier                                         | Harris         | 1 book  |
+| fake_book                                           | Harris         | 1 book  |
+| The Namesake                                        | Lahiri         | 2 books |
+| Lincoln In The Bardo                                | Saunders       | 1 book  |
+| Just Kids                                           | Smith          | 1 book  |
+| Cannery Row                                         | Steinbeck      | 1 book  |
++-----------------------------------------------------+----------------+---------+
