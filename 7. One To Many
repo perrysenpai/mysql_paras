@@ -1,0 +1,11 @@
+Joins, 1 key, foreign keys, one to one , one to many :
+
+Types  of Relationships: ONE -ONE : a customer has one row in customer table and one row is associated with one cusotmer
+                         One-Many : A book can have many reviews
+                         MANY-MANY: book- author relation . two or more authors can write a book and a many books can be written by an author 
+                         
+ ONE TO MANY: lets assume customer and order. a customer can have many tables but an order is associated with a single customer.
+https://www.udemy.com/the-ultimate-mysql-bootcamp-go-from-sql-beginner-to-expert/learn/lecture/6965494#overview   SEE table 6:04
+We have duplicate entires for the same person. and although we have customer names , they havent placed orders yet.
+
+What we can have is
