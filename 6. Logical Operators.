@@ -1,0 +1,95 @@
+Not Equal:   !=
+Not Like:    SELECT title from books where title NOT LIKE "%er%";
+Greater than : >, >=
+             Note: if we do SELECT 99>1  it returns 1 if we do 99<1 we get 0 .. UNDERSTAND?
+                   SELECT 'a'>='A'   return 1 because case doestnt matter;
+
+LOGICAL AND : && , AND (both can be used.)
+            SELECT title from books WHERE released_year>2012 && author_lname="eggers" && author_fname="dave";
+Logical AND : ||, OR 
+
+BETWEEN: SELECT title from books where released_year BETWEEN 2003 AND 2007;    
+         NOTE: we cannot do  BETWEEN 2003 && 2007, otherwise it will give us error. BETWEEN and AND are paired together so we cant use &&.
+         NOTE: it is inclusive 2003 and 2007 also included.
+       NOT BETWEEN is also USED.
+       
+***************** NOTE: While using BETWEEN with DATETIME, DATE or TIme it is importatnt to CAST them to desired data type so that we dont get error.
+                  e.g:  HOW To CAST: We cast Date to Datetime.
+                  CAST( '2019-09-12' AS DATETIME);
+                  SELECT CAST('2019-09-12' AS DATETIME);
+                  +--------------------------------+
+                  | CAST('2019-09-12' AS DATETIME) 
+                  +--------------------------------+
+                  | 2019-09-12 00:00:00            |
+                  +--------------------------------+
+                  
+                  
+IN and NOT IN :  Instead of doing repetitive OR  we can use IN
+SELECT author_fname from books WHERE author_fname IN("JHUMPA","NEIL","DAVE");
++--------------+
+| author_fname |
++--------------+
+| Jhumpa       |
+| Neil         |
+| Neil         |
+| Jhumpa       |
+| Dave         |
+| Dave         |
+| Dave         |
+| Neil         |
++--------------+
+NOT IN works in the same way.
+SELECT released_year  from books WHERE released_year%2=1;
+
+
+CASE STATEMENTS: 
+            SELECT title, released_year , CASE WHEN released_year>2000 THEN "MODERN LIT" ELSE "OLD AGE" END as GENRE from books;
++-----------------------------------------------------+---------------+------------+
+| title                                               | released_year | GENRE      |
++-----------------------------------------------------+---------------+------------+
+| The Namesake                                        |          2003 | MODERN LIT |
+| Norse Mythology                                     |          2016 | MODERN LIT |
+| American Gods                                       |          2001 | MODERN LIT |
+| Interpreter of Maladies                             |          1996 | OLD AGE    |
+| A Hologram for the King: A Novel                    |          2012 | MODERN LIT |
+| The Circle                                          |          2013 | MODERN LIT |
+| The Amazing Adventures of Kavalier & Clay           |          2000 | OLD AGE    |
+| Just Kids                                           |          2010 | MODERN LIT |
+| A Heartbreaking Work of Staggering Genius           |          2001 | MODERN LIT |
+| Coraline                                            |          2003 | MODERN LIT |
+| What We Talk About When We Talk About Love: Stories |          1981 | OLD AGE    |
+| Where I'm Calling From: Selected Stories            |          1989 | OLD AGE    |
+| White Noise                                         |          1985 | OLD AGE    |
+| Cannery Row                                         |          1945 | OLD AGE    |
+| Oblivion: Stories                                   |          2004 | MODERN LIT |
+| Consider the Lobster                                |          2005 | MODERN LIT |
+| 10% Happier                                         |          2014 | MODERN LIT |
+| fake_book                                           |          2001 | MODERN LIT |
+| Lincoln In The Bardo                                |          2017 | MODERN LIT |
++-----------------------------------------------------+---------------+------------+
+
+SELECT title, stock_quantity , CASE WHEN stock_quantity BETWEEN 0 AND 60 THEN "*"  WHEN stock_quantity BETWEEN 61 AND 120 THEN "**" WHEN stock_quantity>600 THEN "FLOP"  ELSE "***" END as STOCK from books;
++-----------------------------------------------------+----------------+-------+
+| title                                               | stock_quantity | STOCK |
++-----------------------------------------------------+----------------+-------+
+| The Namesake                                        |             32 | *     |
+| Norse Mythology                                     |             43 | *     |
+| American Gods                                       |             12 | *     |
+| Interpreter of Maladies                             |             97 | **    |
+| A Hologram for the King: A Novel                    |            154 | ***   |
+| The Circle                                          |             26 | *     |
+| The Amazing Adventures of Kavalier & Clay           |             68 | **    |
+| Just Kids                                           |             55 | *     |
+| A Heartbreaking Work of Staggering Genius           |            104 | **    |
+| Coraline                                            |            100 | **    |
+| What We Talk About When We Talk About Love: Stories |             23 | *     |
+| Where I'm Calling From: Selected Stories            |             12 | *     |
+| White Noise                                         |             49 | *     |
+| Cannery Row                                         |             95 | **    |
+| Oblivion: Stories                                   |            172 | ***   |
+| Consider the Lobster                                |             92 | **    |
+| 10% Happier                                         |             29 | *     |
+| fake_book                                           |            287 | ***   |
+| Lincoln In The Bardo                                |           1000 | FLOP  |
++-----------------------------------------------------+----------------+-------+
+         
